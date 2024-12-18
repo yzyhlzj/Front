@@ -4,11 +4,11 @@
 
 # CSS
 
-## 	边框样式
+##  边框样式
 
 定义一个元素的边框样式需要设置三个方面：<1>边框宽度(border-width)<2>边框外观(border-style)<3>边框颜色(border-color)
 
-### 	边框属性
+###  边框属性
 
 border-width:用于定义边框的宽度,属性是一个像素值
 border-style:用于定义边框的宽度,常用取值有none、dashed、solid
@@ -48,7 +48,7 @@ border-top-style:solid;
 border-top-color:red;
 ```
 
-## 	列表样式
+##  列表样式
 
 ### list-style-type
 
@@ -93,7 +93,7 @@ border-top-color:red;
 </html>
 ```
 
-### 	list-style-image
+###  list-style-image
 
 根据图片设置列表前面的标识，也非常少使用。
 
@@ -117,11 +117,11 @@ border-top-color:red;
 </html>
 ```
 
-## 	表格样式
+##  表格样式
 
 以下两个元素都是在table元素中定义的。
 
-### 	表格标题位置（caption-side）
+###  表格标题位置（caption-side）
 
 取值：top标题在顶部、bottom标题在底部
 
@@ -169,27 +169,25 @@ border-top-color:red;
 </html>
 ```
 
-
-
-### 	表格边框合并（border-collapse）
+###  表格边框合并（border-collapse）
 
 取值：separate有空隙，collapse无空隙。
 
-### 	 表格边框间距（border-spacing）
+###   表格边框间距（border-spacing）
 
 取值：像素值
 
-## 	图片样式
+##  图片样式
 
-### 	图片大小
+###  图片大小
 
 weight:像素值
 
 height:像素值
 
-###    图片边框(同border属性)
+### 图片边框(同border属性)
 
-### 	图片对齐
+###  图片对齐
 
 text-align:left center right
 
@@ -231,7 +229,7 @@ float:left、right
 
 ## 背景样式
 
-### 	背景颜色（background-color）
+###  背景颜色（background-color）
 
 background-color：颜色值
 
@@ -258,9 +256,9 @@ background-color：颜色值
 </html>
 ```
 
-## 	超链接样式
+##  超链接样式
 
-### 	
+###  
 
 ### 浏览器鼠标样式
 
@@ -291,5 +289,4 @@ background-color：颜色值
 </html>
 ```
 
-## 	盒子模型
-
+##  盒子模型
