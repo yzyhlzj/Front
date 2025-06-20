@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>回顾Object.defineproperty方法</title>
+    <script src="../js/vue.js"></script>
+</head>
+
+<body>
+
+    <h1>回顾Object.defineproperty方法</h1>
+    <script type="text/javascript">
+        let number = 19
+        let person = {
+            name: '张三',
+            sex: '男',
+        }
+        Object.defineProperty(person, 'age', {
+            // enumerable: false, // 默认为false，表示该属性不可枚举
+            //value: 20, // 属性值
+            //writable: true, // 默认为false，表示属性值不可修改
+            //configurable: true, // 默认为false，表示属性的可配置性
+            get: function () {
+                console.log('有人读取age属性')
+                return number
+            },
+            set: function (newVal) {
+                console.log('有人修改age属性')
+                number = newVal
+            }
+        })
+        console.log(person) // 有人读取age属性
+    </script>
+</body>
+
+</html>

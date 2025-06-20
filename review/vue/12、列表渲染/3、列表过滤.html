@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>条件渲染</title>
+    <script src="../js/vue.js"></script>
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <!--
+      
+    -->
+
+
+    <div id="app">
+        <h3>人员列表</h3>
+
+        <input type="text" v-model="keyWord" placeholder="请输入姓名关键字" />
+        <div v-for="(p,index) in filpersons" :key="p.id">
+            {{p.name}} - {{p.age}}
+        </div>
+        <hr>
+        {{keyWord}}
+        <hr>
+    </div>
+    <script type="text/javascript">
+        const vm = new Vue({
+            el: '#app',
+            data: {
+                keyWord: '',
+                persons: [
+                    { id: '001', name: '塞瑞尔达', age: 18, sex: '女' },
+                    { id: '002', name: '韦鲁斯', age: 20, sex: '男' },
+                    { id: '003', name: '塞恩', age: 22, sex: '男' },
+                    { id: '004', name: '韦恩', age: 22, sex: '女' }
+                ],
+                //filpersons: []  watch版本需要在data中声明该变量
+            },
+            // watch: {
+            //     keyWord: {
+            //         immediate: true,
+            //         // 立即执行一次
+            //         handler(newVal) {
+            //             console.log('第一次调用');
+            //             // 过滤人员列表
+            //             this.filpersons = this.persons.filter((p) => p.name.indexOf(newVal) !== -1);
+            //         }
+            //     }
+
+            // }
+            computed: {
+                filpersons() {
+                    // 过滤人员列表
+                    return this.persons.filter((p) => p.name.indexOf(this.keyWord) !== -1);
+                }
+            }
+        })
+
+
+    </script>
+</body>
+
+</html>

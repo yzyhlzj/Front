@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>姓名案例_插值语法实例</title>
+    <script src="../js/vue.js"></script>
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <!-- 
+    
+    -->
+
+
+    <div id="app">
+        姓<input type="text" v-model="firstName"><br><br>
+        名<input type="text" v-model="lastName"><br><br>
+        全名 <div> {{fullName}}</div>
+        全名 <div> {{fullName}}</div>
+        全名 <div> {{fullName}}</div>
+    </div>
+    <script type="text/javascript">
+        new Vue({
+            el: '#app',
+            data: {
+                firstName: '张',
+                lastName: '三'
+            },
+            computed: {
+                fullName() {
+                    console.log("计算属性中的方法被调用了")
+                    return this.firstName + '-' + this.lastName;
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

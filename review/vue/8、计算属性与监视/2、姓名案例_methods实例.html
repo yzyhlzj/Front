@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>姓名案例_插值语法实例</title>
+    <script src="../js/vue.js"></script>
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <!-- 
+    (1)再绑定事件的函数时,函数可以不加小括号,但是在插值语法中,函数必须要加小括号
+    (2)Vue中的数据发生改变时,Vue就会重新解析模板,此时,插值语法中的函数一定会被重新调用,并且不会被缓存
+    -->
+
+
+    <div id="app">
+        姓<input type="text" v-model="firstName"><br><br>
+        名<input type="text" v-model="lastName"><br><br>
+        全名 <div> {{fullName()}}</div>
+        全名 <div> {{fullName()}}</div>
+        全名 <div> {{fullName()}}</div>
+    </div>
+    <script type="text/javascript">
+        new Vue({
+            el: '#app',
+            data: {
+                firstName: '张',
+                lastName: '三'
+            },
+            methods: {
+                fullName() {
+                    console.log("fullName函数被调用了~")
+                    return this.firstName + '-' + this.lastName;
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

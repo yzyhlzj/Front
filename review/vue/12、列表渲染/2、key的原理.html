@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>列表渲染</title>
+    <script src="../js/vue.js"></script>
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <!--
+        面试题：react、vue中的key有什么作用？（key的内部原理）
+        1、虚拟DOM中key的作用： 
+            key是由虚拟机DOM的标识,当数据发生变化时,Vue会根据【新数据】生成【新的虚拟机DOM】,
+            随后Vue进行【新虚拟DOM】与【旧虚拟DOM】的差异比较,比较规则如下：
+        2、比较规则：
+            1）如果新旧虚拟DOM的key相同,则认为是同一个元素,Vue会复用该元素,并更新该元素的属性
+            2）如果新旧虚拟DOM的key不同,则认为是不同的元素,Vue会销毁旧元素,并创建新元素
+        3、用index作为key的弊端：
+            1）若对数据进行逆序添加、逆序删除等破坏顺序操作:
+                会产生没有必要的真实DOM更新==》界面效果没问题,但效率低
+            2）如果结构中还包含输入类的DOM:
+                会产生错误DOM更新==》界面效果有问题,效率也低
+        4、开发中如何选择key?
+            1）如果数据是有唯一标识的,则使用唯一标识作为key
+            2）如果数据没有唯一标识,则使用index作为key
+            3）如果数据是静态的,则不需要设置key
+    -->
+
+
+    <div id="app">
+        <h3>遍历数组</h3>
+        <!-- 这里的key要绑定p.id,不能用index -->
+        <div v-for="(p,index) in persons" :key="index">
+            {{p.name}} - {{p.age}} - {{index}}
+            <input type="text"></input>
+        </div>
+
+        <hr>
+    </div>
+    <script type="text/javascript">
+        new Vue({
+            el: '#app',
+            data: {
+                persons: [
+                    { id: '001', name: '张三', age: 18 },
+                    { id: '002', name: '李四', age: 20 },
+                    { id: '003', name: '王五', age: 22 }
+                ],
+                car: {
+                    id: '001',
+                    name: '宝马',
+                    price: 100000
+                },
+                str: 'Hello'
+            },
+        })
+    </script>
+</body>
+
+</html>

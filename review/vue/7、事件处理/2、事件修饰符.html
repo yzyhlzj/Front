@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>事件处理的基本使用</title>
+    <script src="../js/vue.js"></script>
+    <style>
+        .box1 {
+            background-color: skyblue;
+            padding: 5px;
+        }
+
+        .box2 {
+            background-color: orange;
+            padding: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 
+       Vue中的事件修饰符：
+        1、.stop  阻止事件冒泡（常用）
+        2、.prevent  阻止默认事件（常用）
+        3、.once  只执行一次（常用）
+        4、.capture  使用事件的捕获模式,在捕获阶段就处理事件
+        5、.self: 只有event.target是当前操作的元素时才触发事件
+        6、.passive  事件的默认行为立即执行，不会等待事件回调执行完毕
+
+
+    -->
+
+
+    <div id="app">
+        <h1>欢迎光临,{{name}}</h1>
+        <!-- 阻止事件冒泡（常用） -->
+        <!-- 修饰符可以连续写 -->
+        <a href="http://www.baidu.com" @click.prevent="sayHello">百度</a>
+
+        <div class="demo1" @click="sayHello">
+            <button @click.stop="sayHello">点我阻止事件冒泡</button>
+        </div>
+        <button @click.once="sayHello">点我只触发一次</button>
+
+        <div class="box1" @click="showMsg(1)">
+            div1
+            <div class="box2" @click="showMsg(2)">
+                div2
+            </div>
+        </div>e
+        <hr />
+        <div class="box1" @click.self="showEvent($event)">
+            div1
+            <div class="box2" @click="showEvent($event)">
+                div2
+            </div>
+        </div>
+        <hr />
+        <!-- 事件的默认行为立即执行，无需等待事件回调执行完毕 -->
+        <ul @wheel.passive="demo" class="list">
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+        </ul>
+    </div>
+    <script type="text/javascript">
+        new Vue({
+            el: '#app',
+            data: {
+                name: '张三'
+            },
+            methods: {
+                sayHello() {
+                    alert('你好我是' + this.name)
+                },
+                showMsg(value) {
+                    alert(value)
+                },
+                showEvent(e) {
+                    console.log(e)
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

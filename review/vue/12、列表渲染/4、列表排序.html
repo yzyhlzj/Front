@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>条件渲染</title>
+    <script src="../js/vue.js"></script>
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <!--
+      sort排序 接收两个参数（a,b）a和b都是数组中的元素
+      返回值：如果a小于b，返回负数；如果a大于b，返回正数；如果相等，返回0,升序a-b,降序b-a
+      sort方法会改变原数组
+    -->
+
+
+    <div id="app">
+        <h3>人员列表</h3>
+
+        <input type="text" v-model="keyWord" placeholder="请输入姓名关键字" />
+        <button @click="sortType =1">升序</button>
+        <button @click="sortType =2">降序</button>
+        <button @click="sortType =0">原序</button>
+        <div v-for="(p,index) in filpersons" :key="p.id">
+            {{p.name}} - {{p.age}}
+        </div>
+        <hr>
+        {{keyWord}}
+        <hr>
+    </div>
+    <script type="text/javascript">
+        const vm = new Vue({
+            el: '#app',
+            data: {
+                keyWord: '',
+                sortType: '0',
+                persons: [
+                    { id: '001', name: '塞瑞尔达', age: 18, sex: '女' },
+                    { id: '002', name: '韦鲁斯', age: 20, sex: '男' },
+                    { id: '003', name: '塞恩', age: 22, sex: '男' },
+                    { id: '004', name: '韦恩', age: 22, sex: '女' }
+                ],
+            },
+            computed: {
+                filpersons() {
+                    // 过滤人员列表
+                    const arr = this.persons.filter((p) => p.name.indexOf(this.keyWord) !== -1);
+                    // 根据年龄排序
+                    if (this.sortType === 1) {
+                        // 升序
+                        return arr.sort((a, b) => a.age - b.age);
+                    } else if (this.sortType === 2) {
+                        // 降序
+                        return arr.sort((a, b) => b.age - a.age);
+                    } else {
+                        // 原序
+                        return arr;
+                    }
+                }
+            }
+        })
+
+
+    </script>
+</body>
+
+</html>

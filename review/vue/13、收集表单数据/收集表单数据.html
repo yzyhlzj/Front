@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>收集表单数据</title>
+    <script src="../js/vue.js"></script>
+</head>
+
+<body>
+    <!--
+      
+    -->
+
+    mo
+    <div id="app">
+        <form @submit.prevent="demo">
+            账号<input type="text" v-model="account" /><br /><br />
+            密码<input type="text" v-model="password" /><br /><br />
+            性别:
+            男<input type="radio" name="sex" v-model="sex" value="male" checked="checked" />
+            女<input type="radio" name="sex" v-model="sex" value="female" /><br /><br />
+            年龄<input type="number" v-model.number="age" /><br /><br />
+            爱好:
+            <input type="checkbox" v-model="hobby" value="抽烟" />抽烟
+            <input type="checkbox" v-model="hobby" value="喝酒" />喝酒
+            <input type="checkbox" v-model="hobby" value="烫头" />烫头
+            <br /><br />
+
+            <select v-model="community">
+                <option value="">请选择小区</option>
+                <option value="001">小区1</option>
+                <option value="002">小区2</option>
+                <option value="003">小区3</option>
+            </select>
+            <br /><br />
+            <textarea rows="5" cols="30" v-model="beizhu"></textarea><br /><br />
+            <input type="checkbox" v-model="agree"><a href="http://www.baidu.com">阅读协议并提交</a>
+            <button type="submit">提交</button>
+        </form>
+
+
+    </div>
+    <script type="text/javascript">
+        Vue.config.devtools = true;
+        const vm = new Vue({
+            el: '#app',
+            data: {
+                account: '',
+                password: '',
+                sex: '',
+                hobby: [],
+                community: '',
+                beizhu: '',
+                agree: '',
+                age: '',
+            },
+            methods: {
+                demo() {
+                    // 1、获取表单数据
+                    console.log('账号：' + this.account);
+                    console.log('密码：' + this.password);
+                    console.log('性别：' + this.sex);
+                    console.log('爱好：' + this.hobby);
+                    console.log('小区：' + this.community);
+                    console.log('备注：' + this.beizhu);
+                    console.log('是否同意协议：' + this.agree);
+                }
+            },
+        })
+    </script>
+</body>
+
+</html>

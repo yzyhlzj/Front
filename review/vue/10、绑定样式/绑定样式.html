@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Vue 绑定样式示例</title>
+    <script src="../js/vue.js"></script>
+    <style>
+        .basic {
+            height: 100px;
+            width: 200px;
+            border: 1px solid #ccc;
+        }
+
+        .redstyle {
+            background-color: red;
+        }
+
+        .bluestyle {
+            background-color: blue;
+        }
+
+        .yellowstyle {
+            background-color: yellow;
+        }
+
+        .css1 {
+            border-radius: 10px;
+        }
+
+        .css2 {
+            font-weight: 600;
+            color: blueviolet;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <!-- 绑定class样式 -- 字符串写法，适用于：样式的类名不确定，需要动态指定 -->
+        <div class="basic" :class=background @click="changeBackground">test</div>
+
+        <!-- 绑定class样式 -- 数组写法，适用于：要绑定的样式个数不确定，名字也不确定 -->
+        <div class="basic" :class=arr @click="changeClassArr">test</div>
+
+        <!-- 绑定class样式 -- 对象写法，适用于：样式的个数确定、名字确定，但需要动态控制是否添加 -->
+        <div class="basic" :class=classObj :style=styleObj @click="changeObj">test</div>
+    </div>
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                styleObj: {
+                    color: 'blue', // 字体颜色
+                    fontSize: '20px', // 字体大小
+                },
+                fsize: 40, // 字体大小
+                background: 'red', // 初始背景颜色
+                classObj: {
+                    redstyle: true,
+                }, // 对象写法，控制样式是否添加
+                arr: ['css1', 'css2'], // 数组写法，包含多个样式,
+            },
+            methods: {
+                changeBackground() {
+                    const colors = ['red', 'blue', 'yellow'];
+                    let index = Math.random() * 3; // 生成随机数
+                    //background = this.background;
+                    this.background = colors[Math.floor(index)]; // 随机选择颜色
+                },
+                changeObj() {
+                    this.classObj.redstyle = !this.classObj.redstyle; // 切换红色样式
+                },
+                changeClassArr() {
+
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

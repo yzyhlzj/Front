@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>模板语法</title>
+    <script src="../js/vue.js"></script>
+</head>
+
+<body>
+    <!-- 
+    Vue模板语法有两大类：
+    1、插值语法
+        功能：用于解析标签体内容
+        写法：{{ message }},message是js表达式，且可以直接读取到data中的所有属性
+    2、指令语法
+        功能：用于解析标签（包括：标签属性、标签内容、绑定事件。。。。）
+        举例：v-bind:href="url"，简写为 :href="url"，url同样要写js表达式
+            且可以直接读取到data中的所有属性
+        备注：Vue中有很多的指令，且形式都是v-xxx，此处我们只是拿v-bind:举例
+    -->
+
+
+    <div id="app">
+        <h1>插值语法</h1>
+        {{ message }}
+        <hr />
+        <h1>指令语法</h1>
+        <a v-bind:href="url">跳转到百度</a>
+        <a :href="url">跳转到百度</a>
+        <hr />
+    </div>
+    <script type="text/javascript">
+        Vue.config.devtools = true;
+        var app = new Vue({      // 创建一个Vue实例
+            el: '#app',          // 指定挂载的元素
+            data: {
+                message: 'Hello Vue!!!',
+                url: 'https://www.baidu.com'
+            }
+
+        });
+
+    </script>
+</body>
+
+</html>
