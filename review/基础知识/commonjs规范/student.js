@@ -17,5 +17,5 @@ module.exports = {
 // exports.name = name
 
 
-// 输出当前函数的名称,之所以能使用module是因为函数中传入了module参数
+//打印调用的函数，解释了cjs中为什么能使用module对象
 //console.log(arguments.callee.toString()); 
