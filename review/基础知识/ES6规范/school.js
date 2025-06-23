@@ -9,4 +9,4 @@ function getCities() {
     return ['阜阳', '合肥', '芜湖']
 }
 
-//export default { name: name, slogan: slogan, getTel: getTel, getCities: getCities };
+export default { name, slogan, getTel, getCities };

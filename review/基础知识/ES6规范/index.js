@@ -9,5 +9,12 @@ console.log('Hello, ES6!');
 // console.log(student.getTel());
 // console.log(student.getHobby());
 
-import aaa from './student.js';
-console.log(aaa);
+
+//import 不接收任何值直接导入，可以执行js文件中的代码
+//import './operation.js';
+
+const btn = document.getElementById('btn');
+btn.onclick = async () => {
+    const student = await import('./student.js');
+    console.log(student);
+}
